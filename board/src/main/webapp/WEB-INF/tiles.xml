@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+  <definition name="myapp.homepage" template="/layouts/classic.jsp">
+    <put-attribute name="title" value="Tiles tutorial homepage" />
+    <put-attribute name="header" value="/tiles/banner.jsp" />
+    <put-attribute name="menu" value="/tiles/common_menu.jsp" />
+    <put-attribute name="body" value="/tiles/home_body.jsp" />
+    <put-attribute name="footer" value="/tiles/credits.jsp" />
+  </definition>
+  
+  <!-- User용. -->
+  <definition name="boardapp" template="/WEB-INF/layouts/template.jsp">
+    <put-attribute name="title" value="Tiles Template homepage" />
+    <put-attribute name="header" value="/WEB-INF/layouts/header.jsp" />
+    <put-attribute name="menu" value="/WEB-INF/layouts/menu.jsp" />
+    <put-attribute name="body" value="/WEB-INF/layouts/body.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/layouts/footer.jsp" />
+  </definition>
+  
+  <definition name="WILDCARD:board/*" extends="boardapp">
+  	<put-attribute name="body" value="/WEB-INF/view/{1}.jsp" />
+  </definition>
+  
+  <!-- Admin용. -->
+  <definition name="adminapp" template="/WEB-INF/layouts/admin_temp.jsp">
+    <put-attribute name="title" value="Tiles Template homepage" />
+    <put-attribute name="nav" value="/WEB-INF/layouts/admin_nav.jsp" />
+    <put-attribute name="menu" value="/WEB-INF/layouts/admin_menu.jsp" />
+    <put-attribute name="body" value="/WEB-INF/layouts/admin_body.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/layouts/admin_footer.jsp" />
+  </definition>
+  
+  <definition name="WILDCARD:member/*" extends="adminapp">
+  	<put-attribute name="body" value="/WEB-INF/view/member/{1}.jsp" />
+  </definition>
+  
+  <definition name="WILDCARD:*/*" extends="boardapp">
+  	<put-attribute name="body" value="/WEB-INF/view/{1}/{2}.jsp" />
+  </definition>
+  
+  <!-- 상품관련. header/body/footer prduct.hompage-->
+  <!-- product.do => product/productList.tiles =>  /WEB-INF/view/prod/{1}.jsp-->
+  <definition name="product" template="/WEB-INF/productLayouts/prod_temp.jsp">
+  	<put-attribute name="title" value="Tiles Template homepage" />
+    <put-attribute name="nav" value="/WEB-INF/productLayouts/prod_nav.jsp" />
+    <put-attribute name="header" value="/WEB-INF/productLayouts/prod_header.jsp" />
+    <put-attribute name="body" value="/WEB-INF/productLayouts/prod_body.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/productLayouts/prod_footer.jsp" />
+  </definition>
+  
+  <definition name="WILDCARD:product/*" extends="product">
+  	<put-attribute name="body" value="/WEB-INF/view/product/{1}.jsp"/>
+  </definition>
+  
+</tiles-definitions>

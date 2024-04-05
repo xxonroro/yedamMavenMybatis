@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 400px;
+        height: 380px;
+        background-color: rgb(98, 103, 150);
+      }
+
+      span {
+        display: inline-block;
+        width: 85px;
+        height: 30px;
+        padding: 2px;
+        margin: 2px;
+        background-color: skyblue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <input type="text" id="keyword" />
+    <button id="findBtn">찾기</button>
+    <div id="show">
+      <span>Lorem</span>
+      <span>ipsum</span>
+      <span>dolor</span>
+      <span>sit</span>
+      <span>amet</span>
+      <span>consectetur</span>
+      <span>adipisicing</span>
+      <span>elit.</span>
+      <span>Accusantium</span>
+      <span>dolores</span>
+      <span>reprehenderit</span>
+      <span>eius</span>
+      <span>distinctio,</span>
+      <span>molestiae</span>
+      <span>ratione</span>
+      <span>culpa</span>
+      <span>laborum</span>
+      <span>quia</span>
+      <span>odio</span>
+      <span>deleniti</span>
+      <span>non</span>
+      <span>aliquam</span>
+      <span>modi</span>
+      <span>nostrum</span>
+      <span>quas!</span>
+      <span>Ab</span>
+      <span>atque</span>
+      <span>ullam</span>
+      <span>in</span>
+      <span>dolorum.</span>
+    </div>
+    <script>
+      const btn = document.querySelector("#findBtn");
+      const input = document.querySelector("#keyword");
+      const spanAll = document.querySelectorAll("#show span");
+
+      btn.addEventListener("click", function (e) {
+        spanAll.forEach((element) => {
+          if (input.value == element.innerText) {
+            element.remove();
+          }
+        });
+        input.value = "";
+      });
+    </script>
+  </body>
+</html>

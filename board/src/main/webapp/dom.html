@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>dom.html</title>
+</head>
+<body>
+	<!-- jsp 페이지 응답/ xml, json 데이터 응답 -->
+	<div id="show">
+		<!-- 
+		<ul>
+			<li>사과</li>
+			<li>복숭아</li>
+			<li>수박</li>
+		</ul>
+		<table border="1">
+		 <tr>
+		 	<td>1</td>
+		 	<td>사과</td>
+		 </tr>
+		 <tr>
+		 	<td>2</td>
+		 	<td>복숭아</td>
+		 </tr>
+		 <tr>
+		 	<td>3</td>
+		 	<td>수박</td>
+		 </tr>	
+		 -->
+
+	</div>
+
+	<script type="text/javascript">
+		// Document Object model
+		const data = ['사과', '복숭아', '수박'];
+		const obj = {
+			name: "홍길동",
+			age: 20,
+			phone: '010-1111-2222',
+		}
+		const members = [{mno: 11, name: '홍길동', point: 100},
+						  {mno: 12, name: '김민석', point: 90},	
+						  {mno: 13, name: '박민석', point: 150}];
+		
+		const div = document.querySelector('#show');
+		const table = document.createElement('table');
+		
+		table.setAttribute("border", "1");
+		div.appendChild(table);
+		
+		makeTableTwo();
+		
+		function makeTableTitle() {
+			const tr = document.createElement('tr');
+			
+			const thOne = document.createElement('th');
+			thOne.innerText = "번호"
+			tr.appendChild(thOne);
+			
+			const thTwo = document.createElement('th');
+			thTwo.innerText = "이름"
+			tr.appendChild(thTwo);
+			
+			const thThree = document.createElement('th');
+			thThree.innerText = "점수"
+			tr.appendChild(thThree);
+			
+			table.appendChild(tr);
+		}
+		
+		function makeTableTwo() {
+			makeTableTitle();
+			
+			members.forEach((elements) => {
+				const tr = document.createElement('tr');
+				
+				const tdOne = document.createElement('td');
+				tdOne.innerText = elements.mno;
+				tr.appendChild(tdOne);
+				
+				const tdTwo = document.createElement('td');
+				tdTwo.innerText = elements.name;
+				tr.appendChild(tdTwo);
+				
+				const tdThree = document.createElement('td');
+				tdThree.innerText = elements.point;
+				tr.appendChild(tdThree);
+				
+				table.appendChild(tr);
+			});
+		}
+		
+		function makeTable() {
+			data.forEach(function (element, index, array) {
+				let tr = document.createElement('tr');
+				
+				let td1 = document.createElement('td');
+				td1.innerText = index + 1;
+				tr.appendChild(td1);
+				
+				let td2 = document.createElement('td');
+				td2.innerText = element;
+				tr.appendChild(td2);
+				
+				table.appendChild(tr);
+			});
+			const div = document.querySelector('#show').appendChild(table);
+		} //end of makeTable.
+		
+		members = data;
+		let tabl = document.createElement('table');
+		tab.setAttribute('class', 'table');
+		
+		for (let member of members) {
+			let tr = document.createElement('tr');
+			for(let prop in member) {
+				let td = document.createElement('td');
+				td.innerText = member[prop];
+				tr.appendChild(td);
+			}
+			tab.appendChild(tr);
+		}
+		document.querySelector('#show').appendChild(tab);
+		resp.getWriter().print(json);
+
+		
+
+	</script>
+</body>
+</html>
