@@ -43,6 +43,12 @@
 	</table>
 </form>
 
+
+<input id = "year" type="text" />
+<input id = "month" type="text" />
+<input id = "calBtn" type = "submit" value = "선택" />
+
+
 <div id="show">
 	<table border='1' class="table">
 		<thead id="header" />
@@ -50,8 +56,12 @@
 		<tbody id="list" />
 	</table>
 </div>
-<script src="js/mock_data.js"></script>
-<script src="js/member.js"></script>
+
+시간: <span id = "timer"></span>
+
+
+
+<script src="js/ajax.js"></script>
 
 </body>
 </html>

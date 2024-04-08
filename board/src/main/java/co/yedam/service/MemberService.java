@@ -10,4 +10,6 @@ public interface MemberService {
 	public boolean insertMember(MemberVO vo);
 	public List<MemberVO> memberList();
 	public List<ProductVO> productList();
+	
+	public boolean removeMember(String mid);
 }

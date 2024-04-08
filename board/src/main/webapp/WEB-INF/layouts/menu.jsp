@@ -20,5 +20,6 @@
 	    </c:if>
 	    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="addMemberForm.do">회원가입</a>
 	    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="domForm.do">DOM 연습</a>
+	    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="memberForm.do">Member(Ajax)</a>
 	</div>
 </div>

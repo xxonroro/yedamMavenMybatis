@@ -12,16 +12,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.control.AddBoard;
 import co.yedam.control.AddBoardForm;
+import co.yedam.control.AddMemberAjax;
 import co.yedam.control.BoardControl;
 import co.yedam.control.BoardListControl;
 import co.yedam.control.DomForm;
 import co.yedam.control.LoginControl;
 import co.yedam.control.LoginFormControl;
 import co.yedam.control.LogoutControl;
+import co.yedam.control.MemberAjax;
+import co.yedam.control.MemberForm;
 import co.yedam.control.ModifyBoard;
 import co.yedam.control.ModifyBoardForm;
 import co.yedam.control.RemoveBoard;
 import co.yedam.control.RemoveBoardForm;
+import co.yedam.control.RemoveMemberControl;
 import co.yedam.control.addMemberForm;
 import co.yedam.control.memberDataControl;
 import co.yedam.control.memberList;
@@ -68,6 +72,12 @@ public class FrontControl extends HttpServlet{
 		//product
 
 		map.put("/productList.do", new productList());
+		
+		// ajax
+		map.put("/memberForm.do", new MemberForm());
+		map.put("/memberAjax.do", new MemberAjax());
+		map.put("/removeMember.do", new RemoveMemberControl());
+		map.put("/addMemberAjax.do", new AddMemberAjax());
 	}
 	
 	@Override

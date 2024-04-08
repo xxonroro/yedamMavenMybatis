@@ -42,9 +42,12 @@ function makeRow(member = {}) {
 	});
 	let btn = document.createElement('button');
 	btn.innerText = "삭제";
+	btn.className = "btn"; // btn.setAttribut('class', 'btn');
+	btn.classList.add("btn-danger");
 	btn.addEventListener("click", function(e) {
+		e.stopPropagation();
 		tr.remove();
-	});
+	}, false);
 
 	let td = document.createElement("td");
 	td.appendChild(btn);
@@ -84,8 +87,8 @@ document.querySelectorAll("#show tbody tr").forEach(element => {
 		document.querySelector("#email").value = this.children[3].innerHTML;
 		document.querySelector("#gender").value = this.children[4].innerHTML;
 		document.querySelector("#salary").value = this.children[5].innerHTML;
-	})
-})
+	}, false)
+}) // captituring(상 - > 하), bubbling(하 -> 상)
 
 // 수정 처리
 document.querySelector("#modifyBtn").addEventListener("click", function(e) {

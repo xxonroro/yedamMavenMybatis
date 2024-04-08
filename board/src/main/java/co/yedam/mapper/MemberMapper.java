@@ -10,5 +10,6 @@ public interface MemberMapper {
 	public int insertMember(MemberVO mvo);
 	public List<MemberVO> memberList();
 	public List<ProductVO> productList();
+	public int deleteMember(String mid);
 	
 }

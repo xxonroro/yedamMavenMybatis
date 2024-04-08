@@ -48,4 +48,5 @@ public class BoardServiceImpl implements BoardService{
 	public boolean updateViewCnt(int bno) {
 		return mapper.updateViewCnt(bno) == 1;
 	}
+
 }

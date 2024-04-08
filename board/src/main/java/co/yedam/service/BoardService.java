@@ -15,5 +15,5 @@ public interface BoardService {
 	boolean deleteBoard(int bno);
 	boolean updateViewCnt(int bno);
 	
-
+	
 }

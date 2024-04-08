@@ -26,5 +26,9 @@
 		select * from tbl_product
 	</select>
 	
+	<delete id="deleteMember" parameterType="string">
+		delete from tbl_member
+		where member_id = #{mid}
+	</delete>
 	
 </mapper>
