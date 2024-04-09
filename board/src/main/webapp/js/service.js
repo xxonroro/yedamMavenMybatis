@@ -47,7 +47,6 @@ xhtp.open("get", "memberAjax.do");
 xhtp.send();
 
 xhtp.onload = function () {
-  console.log(JSON.parse(xhtp.response));
   let members = JSON.parse(xhtp.response);
   members.forEach((element) => {
     document.querySelector("#list").appendChild(makeRow(element));

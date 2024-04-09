@@ -10,10 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.yedam.control.AddAjaxBoard;
 import co.yedam.control.AddBoard;
 import co.yedam.control.AddBoardForm;
 import co.yedam.control.AddMemberAjax;
+import co.yedam.control.BoardAjax;
 import co.yedam.control.BoardControl;
+import co.yedam.control.BoardForm;
 import co.yedam.control.BoardListControl;
 import co.yedam.control.DomForm;
 import co.yedam.control.LoginControl;
@@ -24,8 +27,11 @@ import co.yedam.control.MemberForm;
 import co.yedam.control.ModifyBoard;
 import co.yedam.control.ModifyBoardForm;
 import co.yedam.control.RemoveBoard;
+import co.yedam.control.RemoveBoardAjax;
 import co.yedam.control.RemoveBoardForm;
 import co.yedam.control.RemoveMemberControl;
+import co.yedam.control.RemoveReply;
+import co.yedam.control.ReplyList;
 import co.yedam.control.addMemberForm;
 import co.yedam.control.memberDataControl;
 import co.yedam.control.memberList;
@@ -78,6 +84,15 @@ public class FrontControl extends HttpServlet{
 		map.put("/memberAjax.do", new MemberAjax());
 		map.put("/removeMember.do", new RemoveMemberControl());
 		map.put("/addMemberAjax.do", new AddMemberAjax());
+		
+		// 게시판 ajax
+		map.put("/boardForm.do", new BoardForm());
+		map.put("/boardAjax.do", new BoardAjax());
+		map.put("/removeBoardAjax.do", new RemoveBoardAjax());
+		map.put("addAjaxBoard.do", new AddAjaxBoard());
+		
+		map.put("/replyList.do", new ReplyList());
+		map.put("/removeReply.do", new RemoveReply());
 	}
 	
 	@Override
@@ -94,5 +109,4 @@ public class FrontControl extends HttpServlet{
 		Control control = map.get(path);
 		control.exec(req, resp);
 	}
-	
 }

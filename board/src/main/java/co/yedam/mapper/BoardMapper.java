@@ -2,6 +2,7 @@ package co.yedam.mapper;
 
 import java.util.List;
 
+import co.yedam.common.BoardPageVO;
 import co.yedam.common.SearchVO;
 import co.yedam.vo.BoardVO;
 
@@ -14,4 +15,11 @@ public interface BoardMapper {
 	public BoardVO getBoard(int bno);
 	public int modifyBoard(BoardVO bo);
 	public int updateViewCnt(int bno);
+	
+	public List<BoardVO> boardSelectList(BoardPageVO page); 
+ 	
+	
+	public List<BoardVO> boardList();
+	
+	public int insertAjaxBoard(BoardVO bvo);
 }

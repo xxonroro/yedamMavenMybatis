@@ -2,6 +2,7 @@ package co.yedam.service;
 
 import java.util.List;
 
+import co.yedam.common.BoardPageVO;
 import co.yedam.common.SearchVO;
 import co.yedam.vo.BoardVO;
 import co.yedam.vo.MemberVO;
@@ -15,5 +16,8 @@ public interface BoardService {
 	boolean deleteBoard(int bno);
 	boolean updateViewCnt(int bno);
 	
+	List<BoardVO> boardList(BoardPageVO page);
 	
+	boolean insertAjaxBoard(BoardVO bvo);
+	List<BoardVO> baordListTwo();
 }

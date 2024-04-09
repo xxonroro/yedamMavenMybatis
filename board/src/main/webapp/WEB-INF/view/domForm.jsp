@@ -59,8 +59,6 @@
 
 시간: <span id = "timer"></span>
 
-
-
 <script src="js/ajax.js"></script>
 
 </body>

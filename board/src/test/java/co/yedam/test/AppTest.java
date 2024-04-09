@@ -1,17 +1,19 @@
 package co.yedam.test;
 
-import co.yedam.common.SearchVO;
-import co.yedam.service.BoardService;
-import co.yedam.service.BoardServiceImpl;
+import java.util.List;
+
+import co.yedam.common.DataSource;
+import co.yedam.mapper.ReplyMapper;
+import co.yedam.vo.ReplyVO;
 
 public class AppTest {
 	public static void main(String[] args) {
-		SearchVO search = new SearchVO();
-		search.setPage(2);
-		search.setSearchCondition("TW");
-		search.setKeyword("user");
+		ReplyMapper mapper = DataSource.getInstance().openSession().getMapper(ReplyMapper.class);
 		
-		BoardService svc = new BoardServiceImpl();
-		svc.boardList(search).forEach(board -> System.out.println(board.toString()));
+		List<ReplyVO> list = mapper.replyList(2);
+	
+		for(ReplyVO rvo : list) {
+			System.out.println(rvo);
+		}
 	}
 }
