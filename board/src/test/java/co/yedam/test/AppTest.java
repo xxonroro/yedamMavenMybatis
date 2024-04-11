@@ -1,19 +1,23 @@
 package co.yedam.test;
 
 import java.util.List;
+import java.util.Map;
 
-import co.yedam.common.DataSource;
-import co.yedam.mapper.ReplyMapper;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import co.yedam.service.ReplyService;
+import co.yedam.service.ReplyServiceImpl;
 import co.yedam.vo.ReplyVO;
 
 public class AppTest {
 	public static void main(String[] args) {
-		ReplyMapper mapper = DataSource.getInstance().openSession().getMapper(ReplyMapper.class);
+		ReplyService svc = new ReplyServiceImpl();
 		
-		List<ReplyVO> list = mapper.replyList(2);
-	
-		for(ReplyVO rvo : list) {
-			System.out.println(rvo);
-		}
+		List<Map<String, Object>> obj = svc.getCntByMember();
+		
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		String json = gson.toJson(obj);
+		System.out.println(json);
 	}
 }

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+      let url = "https://api.odcloud.kr/api/15077586/v1/centers?page=1&perPage=284&serviceKey=7PP1mQ4C66Qw1JyvioE3ojQqErFPH9gRMhyjMgk6Y4UWi0i54SEnPELtV7brmrSGGHSysF%2FMm8TAwZVoQcnLsg%3D%3D";
+      let fileds = ["id", "centerName", "address", "phoneNumber"];
+      let result;    
+
+      let xhtp = new XMLHttpRequest(); 
+      xhtp.open("get", url);
+      xhtp.send();
+  
+      xhtp.onload = function() {
+        let result = JSON.parse(xhtp.response);
+        console.log(result);
+        result.data.forEach(center => {
+          document.getElementById("list").append(makeRow(center)); 
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", function(event) {
+        let show = document.getElementById("show");
+        
+      });
+      
+      //center 정보 한건에 대한 tr 생성
+      function makeRow(center) {
+        let tr = document.createElement("tr");
+
+        fileds.forEach(element => {
+          let th = document.createElement("th");
+          let txt = center[element];
+          th.innerText = (txt + "").replace("코로나19", "");
+          tr.appendChild(th);
+        })
+
+        return tr;
+      }
+
+      document.addEventListener("DOMContentLoaded", function(e) {
+        const list = document.getElementById("list");
+        const searchBtn = this.querySelector("#findBtn");
+        const keywordInput = this.querySelector("#keyword");
+        const listItem = this.querySelector("#list td:nth-of-type(2)");
+
+        searchBtn.addEventListener("click", function(e) {
+            result = JSON.parse(xhtp.response);
+
+            list.innerHTML = "";
+
+            result.data.forEach(element => {
+              if(element.address.includes(keywordInput.value)) {
+                list.append(makeRow(element)); 
+              };
+            })
+        });
+      })
+
+      
+      
+
+
+
+    </script>
+</head>
+<body>
+	센터명:
+	<input type="text" id="keyword">
+	<buuton id="findBtn">찾기</buuton>
+	<div id="show">
+		<table class="table" border="1">
+			<thead>
+				<tr>
+					<th>센터id</th>
+					<th>센터명</th>
+					<th>센터주소</th>
+					<th>연락처</th>
+				</tr>
+			</thead>
+			<tbody id="list"></tbody>
+		</table>
+	</div>
+</body>
+</html>
+</html>

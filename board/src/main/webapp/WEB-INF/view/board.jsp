@@ -20,6 +20,32 @@ div.reply li {
 div.reply span {
 	display: inline-block;
 }
+
+.center {
+  text-align: center;
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
 </style>
 
 
@@ -62,7 +88,10 @@ div.reply span {
 
 <div class="container reply">
 	<!-- 등록 -->
-
+	<div class="header">
+		<input type="text" class="col-sm-8" id="reply" />
+		<button class="col-sm-3" id="addReply">댓글등록</button>
+	</div>
 
 	<!-- 댓글 목록 -->
 
@@ -87,7 +116,11 @@ div.reply span {
 
 	<div class="footer">
 		<div class="center">
-			<div class="pagination"></div>
+			<div class="pagination">
+				<a href="#">1</a>
+				<a href="#" class="active">2</a>
+				<a href="#">3</a>
+			</div>
 		</div>
 	</div>
 
@@ -95,7 +128,7 @@ div.reply span {
 
 <!--<script src="js/boardService.js"></script> -->
 <script>
-	const logId = "${logId}";
+	const logId =  "<c:out value='${logId}' default='Guest'/>";
 	const writer = "${bvo.writer}";
 	const bno = "${bvo.boardNo}";
 </script>

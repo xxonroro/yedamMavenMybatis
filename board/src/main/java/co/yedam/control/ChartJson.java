@@ -2,6 +2,7 @@ package co.yedam.control;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,33 +12,24 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import co.yedam.common.Control;
-import co.yedam.common.SearchVO;
 import co.yedam.service.ReplyService;
 import co.yedam.service.ReplyServiceImpl;
-import co.yedam.vo.ReplyVO;
 
-public class ReplyList implements Control {
+public class ChartJson implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// 원본 글 파라미터.
 		resp.setContentType("text/json;charset=utf-8");
 		
-		String bno = req.getParameter("bno");
-		String page = req.getParameter("page");
-		page = page == null ? "1" : page;
-		
-		SearchVO search = new SearchVO();
-		search.setBno(Integer.parseInt(bno));
-		search.setRpage(Integer.parseInt(page));
-		
 		ReplyService svc = new ReplyServiceImpl();
-		List<ReplyVO> list = svc.replyList(search);
-	
-		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
-		String json = gson.toJson(list);
+		
+		List<Map<String, Object>> obj = svc.getCntByMember();
+		
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		String json = gson.toJson(obj);
 		
 		resp.getWriter().print(json);
 
 	}
+
 }
