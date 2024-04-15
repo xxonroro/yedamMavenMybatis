@@ -44,7 +44,6 @@
         const list = document.getElementById("list");
         const searchBtn = this.querySelector("#findBtn");
         const keywordInput = this.querySelector("#keyword");
-        const listItem = this.querySelector("#list td:nth-of-type(2)");
 
         searchBtn.addEventListener("click", function(e) {
             result = JSON.parse(xhtp.response);
@@ -58,12 +57,6 @@
             })
         });
       })
-
-      
-      
-
-
-
     </script>
 </head>
 <body>

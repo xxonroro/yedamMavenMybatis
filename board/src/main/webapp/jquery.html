@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+  </head>
+  <script src="js/jquery-3.7.1.js"></script>
+  <body>
+    <!-- webapp/jquery.html -->
+    <ul id="list"></ul>
+    <script>
+      // DOM 제어.
+      // document.createElement('div')
+      $("body").append($("<div />").text("hello")); // jquery 객체를 생성하는 방법
+
+      $("#list").append($("<li>Apple</li>"), $("<li />").text("Banana"));
+
+      let $cherry = $("<li />").text("cherry");
+      $("#list").append($cherry);
+    </script>
+  </body>
+</html>

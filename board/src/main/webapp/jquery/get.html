@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $.get("jquery.html", function (result) {
+        console.log(result);
+        $("#show").html(result);
+      });
+
+      // get 방식으로 지정된 URL에 요청한다. 콜백 함수의 매개변수에는 클라이언트가 수신한 요청의 결과가 담긴다.
+      $.get("../memberAjax.do", function (result) {
+        console.log(result);
+        result.forEach((member) => {
+          $("<tr />").append($("<td />").text(member.memberId), $("<td />").text(member.memberNm), $("<td />").text(member.memberPw)).appendTo("#tlist");
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="show"></div>
+    <div id="list">
+      <table border="1">
+        <tbody id="tlist"></tbody>
+      </table>
+    </div>
+  </body>
+</html>
