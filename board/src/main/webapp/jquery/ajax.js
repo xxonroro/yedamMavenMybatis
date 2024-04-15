@@ -1,3 +1,4 @@
+let fields = ["memberId", "memberNm", "phone", "memberPw"];
 $(document).ready(function () {
   $.ajax({
     url: "../memberAjax.do",
@@ -6,7 +7,6 @@ $(document).ready(function () {
   })
     .done(function (result) {
       // 요청이 성공적으로 완료되었을 때 실행되는 메서드 (목록 출력. id, 이름, 연락처, 비번)
-      let fields = ["memberId", "memberNm", "phone", "memberPw"];
 
       result.forEach((member) => {
         let tr = $("<tr />");
@@ -28,7 +28,6 @@ $(document).ready(function () {
     })
     .always(function (data) {
       //  요청의 성공 여부에 상관없이 실행되는 함수
-      console.log(data);
     });
 
   $("div#register button").on("click", function (e) {
@@ -36,10 +35,30 @@ $(document).ready(function () {
     $.ajax({
       url: "../addMemberAjax.do",
       method: "post",
-      data: $('form[name="myFrm]').serialize(), // form 요소 안에 있는
+      data: $('form[name="myFrm"]').serialize(), // form 요소 안에 있는
       dataType: "json",
     })
-      .done(function (result) {})
+      .done(function (result) {
+        console.log(result);
+        if (result.retCode == "Success") {
+          let tr = $("<tr />");
+
+          const memberInfo = {
+            memberId: $('input[name="mid"]').val(),
+            memberNm: $('input[name="name"]').val(),
+            phone: $('input[name="phone"]').val(),
+            memberPw: $('input[name="pass"]').val(),
+          };
+
+          fields.forEach((field) => {
+            tr.append($("<td />").text(memberInfo[field]));
+          });
+
+          $("#show tbody").append(tr);
+        } else {
+          alert("등록 실패");
+        }
+      })
       .fail(function (err) {});
   });
 });
