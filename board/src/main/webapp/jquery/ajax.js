@@ -7,7 +7,7 @@ $(document).ready(function () {
   })
     .done(function (result) {
       // 요청이 성공적으로 완료되었을 때 실행되는 메서드 (목록 출력. id, 이름, 연락처, 비번)
-
+		console.log(result);
       result.forEach((member) => {
         let tr = $("<tr />");
 

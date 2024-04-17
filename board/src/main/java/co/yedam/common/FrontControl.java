@@ -19,8 +19,11 @@ import co.yedam.control.BoardAjax;
 import co.yedam.control.BoardControl;
 import co.yedam.control.BoardForm;
 import co.yedam.control.BoardListControl;
+import co.yedam.control.CartList;
 import co.yedam.control.CharForm;
 import co.yedam.control.ChartJson;
+import co.yedam.control.DeleteAll;
+import co.yedam.control.DeleteCartList;
 import co.yedam.control.DomForm;
 import co.yedam.control.LoginControl;
 import co.yedam.control.LoginFormControl;
@@ -36,6 +39,8 @@ import co.yedam.control.RemoveMemberControl;
 import co.yedam.control.RemoveReply;
 import co.yedam.control.ReplyCount;
 import co.yedam.control.ReplyList;
+import co.yedam.control.EditCart;
+import co.yedam.control.JsonUpload;
 import co.yedam.control.addMemberForm;
 import co.yedam.control.memberDataControl;
 import co.yedam.control.memberListControl;
@@ -104,6 +109,14 @@ public class FrontControl extends HttpServlet {
 		map.put("/charForm.do", new CharForm());
 		map.put("/chartJson.do", new ChartJson());
 		
+		// 장바구니. (카트 목록, 수량 변경, 삭제)
+		map.put("/cartList.do", new CartList());
+		
+		map.put("/editCart.do", new EditCart());
+		
+		map.put("/delCart.do", new DeleteCartList());
+		map.put("/deleteAll.do", new DeleteAll());
+		map.put("jsonUpload.do", new JsonUpload());
 	}
 
 	@Override

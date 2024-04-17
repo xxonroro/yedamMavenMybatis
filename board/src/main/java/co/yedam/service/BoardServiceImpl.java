@@ -7,6 +7,7 @@ import co.yedam.common.DataSource;
 import co.yedam.common.SearchVO;
 import co.yedam.mapper.BoardMapper;
 import co.yedam.vo.BoardVO;
+import co.yedam.vo.CartVO;
 import co.yedam.vo.MemberVO;
 
 public class BoardServiceImpl implements BoardService {

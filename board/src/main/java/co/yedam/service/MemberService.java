@@ -2,6 +2,7 @@ package co.yedam.service;
 
 import java.util.List;
 
+import co.yedam.vo.CartVO;
 import co.yedam.vo.MemberVO;
 import co.yedam.vo.ProductVO;
 
@@ -12,4 +13,11 @@ public interface MemberService {
 	public List<ProductVO> productList();
 	
 	public boolean removeMember(String mid);
+	
+	public List<CartVO> selectCartList();
+	public boolean delectCartList(int no);
+	public boolean delectAll();
+	public boolean updateCart(CartVO vo);
+	public int addCartAry(CartVO[] array);
 }
+	

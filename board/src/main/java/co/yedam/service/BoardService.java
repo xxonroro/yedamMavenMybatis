@@ -5,7 +5,7 @@ import java.util.List;
 import co.yedam.common.BoardPageVO;
 import co.yedam.common.SearchVO;
 import co.yedam.vo.BoardVO;
-import co.yedam.vo.MemberVO;
+import co.yedam.vo.CartVO;
 
 public interface BoardService {
 	List<BoardVO> boardList(SearchVO search);
@@ -20,4 +20,5 @@ public interface BoardService {
 	
 	boolean insertAjaxBoard(BoardVO bvo);
 	List<BoardVO> baordListTwo();
+
 }

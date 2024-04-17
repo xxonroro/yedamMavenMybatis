@@ -10,25 +10,58 @@
 		select *
 		from tbl_member
 		where member_id = #{memberId}
-		and member_pw = #{memberPw}
+		and
+		member_pw = #{memberPw}
 	</select>
 
 	<insert id="insertMember" parameterType="co.yedam.vo.MemberVO">
-		insert into tbl_member (member_id, member_pw, member_nm, phone)
-		values (#{memberId}, #{memberPw}, #{memberNm}, #{phone})
+		insert into tbl_member
+		(member_id, member_pw, member_nm, phone)
+		values (#{memberId},
+		#{memberPw}, #{memberNm}, #{phone})
 	</insert>
-	
+
 	<select id="memberList" resultType="co.yedam.vo.MemberVO">
 		select * from tbl_member
 	</select>
-	
-	<select id="productList" resultType="co.yedam.vo.ProductVO" >
+
+	<select id="productList" resultType="co.yedam.vo.ProductVO">
 		select * from tbl_product
 	</select>
-	
+
 	<delete id="deleteMember" parameterType="string">
 		delete from tbl_member
 		where member_id = #{mid}
 	</delete>
-	
+
+	<select id="selectCartList" resultType="co.yedam.vo.CartVO">
+		select *
+		from tbl_cart
+	</select>
+
+	<delete id="delectCartList" parameterType="int">
+		delete
+		from tbl_cart
+		where no = #{no}
+	</delete>
+
+	<delete id="delectAll" parameterType="int">
+		delete
+		from tbl_cart
+	</delete>
+
+
+	<update id="updateCart" parameterType="co.yedam.vo.CartVO">
+		update tbl_cart
+		set qty =
+		qty + #{qty}
+		where no = #{no}
+	</update>
+
+	<insert id="insertCartAry">
+		insert into tbl_cart (no, product_nm, price, qty)
+		<foreach collection="array" item="cart" open="select "
+			separator="from dual union all select " close=" from dual "> #{cart.no},
+			#{cart.productNm}, #{cart.price}, #{cart.qty} </foreach>
+	</insert>
 </mapper>

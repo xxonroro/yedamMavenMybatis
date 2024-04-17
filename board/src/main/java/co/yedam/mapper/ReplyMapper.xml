@@ -49,4 +49,5 @@
 		group by m.member_nm
 	</select>
 
+
 </mapper>
